@@ -1,11 +1,12 @@
 public class CreditPaymentService {
-    public int calculate(int creditInRub, int creditLoanInYears, double percentageRate) {
-        double a = (1 + percentageRate);
-        double b = creditLoanInYears;
+    public int calculate(int creditInRub, int creditLoanInMonths, double percentageRate) {
+        double percentInMonth = percentageRate / 12 / 100;
+        double a = (1 + percentInMonth);
+        double b = creditLoanInMonths;
 
-        double monthlyPaymentInRub = creditInRub * ((percentageRate * Math.pow(a, b)) / (Math.pow(a, b) - 1));
+        double monthlyPaymentInRub = creditInRub * ((percentInMonth * Math.pow(a, b)) / (Math.pow(a, b) - 1));
 
-        return (int)  monthlyPaymentInRub;
+        return (int) monthlyPaymentInRub;
 
 
     }
